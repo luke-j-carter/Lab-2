@@ -18,24 +18,29 @@ public class AddEventModel extends JDialog {
         setModal(true);
         setLayout(new GridLayout(0, 2));
 
+        //Event name textfield
         add(new JLabel("Event Name:"));
         nameField = new JTextField();
         add(nameField);
-
+        
+        //Event type textfield
         add(new JLabel("Event Type:"));
         eventTypeBox = new JComboBox<>(new String[]{"Deadline", "Meeting"});
         eventTypeBox.addActionListener(e -> toggleFields());
         add(eventTypeBox);
 
+        //Event starrt time textfield
         add(new JLabel("Start Time (yyyy-MM-dd'T'HH:mm):"));
         dateField = new JTextField();
         add(dateField);
 
+        //Event end time textfield
         add(new JLabel("End Time (only for Meeting, yyyy-MM-dd'T'HH:mm):"));
         endField = new JTextField();
         endField.setEnabled(false);
         add(endField);
 
+        //Event location textfield
         add(new JLabel("Location (only for Meeting):"));
         locationField = new JTextField();
         locationField.setEnabled(false);
@@ -69,9 +74,9 @@ public class AddEventModel extends JDialog {
             }
             dispose();
         } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(this, "Invalid date format. Please use yyyy-MM-dd HH:mm.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please use this format: yyyy-MM-dd'T'HH:mm", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "There was an error " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
